@@ -1,0 +1,17 @@
+{
+  "typescript": {
+    "lineWidth": 120,
+    "quoteStyle": "preferSingle",
+    "semiColons": "asi",
+    "operatorPosition": "maintain",
+    "module.sortImportDeclarations": "maintain",
+    "importDeclaration.sortNamedImports": "maintain"
+  },
+  "includes": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.94.0.wasm"
+  ]
+}
