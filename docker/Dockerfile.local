@@ -4,3 +4,6 @@ ENV PROJECT_ROOT=/usr/src/app
 ENV NODE_ENV=development
 
 WORKDIR $PROJECT_ROOT
+
+RUN yarn install --frozen-lockfile
+CMD ["yarn", "watch"]
