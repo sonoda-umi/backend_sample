@@ -9,6 +9,7 @@ http://localhost:3000/api/v1/samples
 ```
 
 # あえて省いた事
+* 環境差分の吸収
 * 認証周り
 * DB構築
 * CI/CD
