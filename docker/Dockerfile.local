@@ -5,5 +5,8 @@ ENV NODE_ENV=development
 
 WORKDIR $PROJECT_ROOT
 
+COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
+COPY . .　
+
 CMD ["yarn", "watch"]
