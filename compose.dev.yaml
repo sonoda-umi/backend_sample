@@ -1,0 +1,50 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.app
+    container_name: app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      DATABASE_HOST: "${DATABASE_HOST}"
+      DATABASE_NAME: "${DATABASE_NAME}"
+      DATABASE_USER: "${DATABASE_USER}"
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      DATABASE_PORT: "${DATABASE_PORT}"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    tty: true
+
+  db:
+    image: "mysql:${DB_IMAGE_TAG}"
+    container_name: "${DATABASE_NAME}"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DATABASE_NAME}"
+      MYSQL_USER: "${DATABASE_USER}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+    volumes:
+      - db_data:/var/lib/mysql 
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+  
+  redis:
+    image: "redis:${REDIS_IMAGE_TAG}"
+    container_name: "redis"
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  app_data:
+  redis_data:
+  db_data:
+

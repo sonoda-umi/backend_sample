@@ -1,0 +1,43 @@
+name: CI with Docker Compose
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Set up Docker Compose
+      run: |
+        docker compose version
+
+    - name: Build
+      run: |
+        docker compose -f compose.dev.yaml up
+        docker compose ps
+        docker compose logs
+
+    - name: Format
+      run: |
+        docker exec app yarn fix
+
+    - name: Run Tests
+      run: |
+        docker exec app yarn test
+
+    - name: Shut down
+      if: always()
+      run: |
+        docker compose -f compose.dev.yaml down

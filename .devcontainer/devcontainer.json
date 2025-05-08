@@ -1,7 +1,7 @@
 {
     "name": "api",
     "dockerComposeFile": [
-      "../compose.yaml"
+      "../compose.dev.yaml"
     ],
     "service": "app",
     "workspaceFolder": "/usr/src/app"
