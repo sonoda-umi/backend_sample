@@ -1,5 +1,5 @@
 
-[![CI with Docker Compose](https://github.com/sonoda-umi/backend_sample/actions/workflows/ci.yaml/badge.svg)](https://github.com/sonoda-umi/backend_sample/actions/workflows/ci.yaml)
+[![CI](https://github.com/sonoda-umi/backend_sample/actions/workflows/ci.yaml/badge.svg)](https://github.com/sonoda-umi/backend_sample/actions/workflows/ci.yaml)
 [![License: MIT](https://img.shields.io/badge/license-Apache%202.0-green)](https://opensource.org/license/apache-2-0)
 
 # backend_sample
